@@ -26,12 +26,20 @@ Alex's Notes
     - Let me know if you have any questions
     
 Evan's Notes
+<<<<<<< HEAD
+	(7/2/2014)
+    - Noticed that, at least in the console window, you can move the cannon and fire at the same time
+    (7/3/2014)
+     - Before firing the bubble, a little calculation needs to be done. I believe that that angle of the open sector of the cannon is pi/2 to start, then either adding or subtracting
+    - DEG_TO_RAD depending on turning the cannon left or right
+=======
 	(7/3/2014)
     - Noticed that, at least in the console window, you can move the cannon and fire at the same time. It will be easier to see when we actually have a bubble firing
     	- Checked with the old game. This doesn't matter because once up is pressed, the ball is fired and another one won't be loaded.
     (7/3/2014)
     - Before firing the bubble, a little calculation needs to be done. I believe that that angle of the open sector of the cannon is pi/2 to start, then either adding or subtracting
     DEG_TO_RAD depending on turning the cannon left or right
+>>>>>>> origin/master
 '''
 
 import pygame, sys
@@ -48,6 +56,7 @@ ROWS = 14
 COLUMNS_ODD = 7
 COLUMNS_EVEN = 8
 TOTAL_COLUMNS = COLUMNS_ODD + COLUMNS_EVEN
+FIRE = False
 screenX, screenY = 640, 480
 DEG_TO_RAD = 0.0174532925
 FIRE = False
@@ -104,7 +113,7 @@ class GameScreen:
     def borderLine(self):
         # borderLine: Draws right line indicating the right edge of the GameScreen.   
         self.lineColor = (250, 250, 250) # WHITE
-        self.borderX = RADIUS + Bubble.radius * TOTAL_COLUMNS # Total columns times radius of bubble plus radius for offset.
+        self.borderX = RADIUS + RADIUS * TOTAL_COLUMNS # Total columns times radius of bubble plus radius for offset.
         self.borderY = screenY
         pygame.draw.line(screen, self.lineColor, (self.borderX, 0), (self.borderX, screenY), 5) # Thinking about changing this somehow. Make it more general.
 
@@ -167,6 +176,13 @@ class Cannon:
         self.maxRight = 2.094395102 # 4PI/6
         self.maxLeft = 4.188790205  # 8PI/6
         self.angle = 1.570796317    # PI/2
+<<<<<<< HEAD
+=======
+        pygame.draw.arc(screen, self.cannonColor, self.rectangle, self.startRadian, self.endRadian, 3)
+    
+    def redraw(self):
+        self.loadCannon() # Check if cannon needs to be loaded
+>>>>>>> origin/master
         pygame.draw.arc(screen, self.cannonColor, self.rectangle, self.startRadian, self.endRadian, 3)
 
     def addBubble(self):
@@ -188,11 +204,21 @@ class Cannon:
 
     def rotateLeft(self, move):
 <<<<<<< HEAD
+<<<<<<< HEAD
     	#print "START %s" % self.startRadian
     	#print "END %s" % self.endRadian
 =======
         # rotateLeft: Rotate the cannon to the left at current ROTATION_SPEED.
 >>>>>>> origin/sandbox_master
+=======
+        # rotateLeft: Rotate the cannon to the left at current ROTATION_SPEED.
+        # print "START %s" % self.startRadian
+        # print "END %s" % self.endRadian
+=======
+    	#print "START %s" % self.startRadian
+    	#print "END %s" % self.endRadian
+>>>>>>> origin/master
+>>>>>>> c0f31bdc2aedbd5eca4aaec562f7acf451973df6
         if(move and self.startRadian < self.maxLeft):
             self.startRadian += ROTATION_SPEED*DEG_TO_RAD
             self.endRadian += ROTATION_SPEED*DEG_TO_RAD
@@ -203,11 +229,21 @@ class Cannon:
     
     def rotateRight(self, move):
 <<<<<<< HEAD
+<<<<<<< HEAD
     	#print "START %s" % self.startRadian
     	#print "END %s" % self.endRadian
 =======
         # rotateRight: Rotate the cannon to the right at current ROTATION_SPEED.
 >>>>>>> origin/sandbox_master
+=======
+        # rotateRight: Rotate the cannon to the right at current ROTATION_SPEED.
+        # print "START %s" % self.startRadian
+        # print "END %s" % self.endRadian
+=======
+    	#print "START %s" % self.startRadian
+    	#print "END %s" % self.endRadian
+>>>>>>> origin/master
+>>>>>>> c0f31bdc2aedbd5eca4aaec562f7acf451973df6
         if(move and self.startRadian > self.maxRight):
             self.startRadian -= ROTATION_SPEED*DEG_TO_RAD
             self.endRadian -= ROTATION_SPEED*DEG_TO_RAD
@@ -216,10 +252,17 @@ class Cannon:
         else:
             return
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 # BUBBLR CLASS: Bubble object that has a color and location. Can be turned into a cannon bubble and be assigned a movement value.
 >>>>>>> origin/sandbox_master
+=======
+
+# BUBBLR CLASS: Bubble object that has a color and location. Can be turned into a cannon bubble and be assigned a movement value.
+=======
+>>>>>>> origin/master
+>>>>>>> c0f31bdc2aedbd5eca4aaec562f7acf451973df6
 class Bubble:
     
     def __init__(self, bubbleColor, row, col):
@@ -377,10 +420,17 @@ while gameRunning:
             sys.exit()
         elif event.type == KEYDOWN:
             if event.key == pygame.K_UP:  # Fire a bubble.
+<<<<<<< HEAD
+                print "fire"
+                gameScreen.fireBubble()
+                FIRE = True
+                print "True"
+=======
             	print "fire"
             	gameScreen.fireBubble()
             	FIRE = True
             	print "True"
+>>>>>>> origin/master
             elif event.key == pygame.K_LEFT: # Move cannon left.
             	print "FIRE = %f" % FIRE
             	if FIRE == False:
